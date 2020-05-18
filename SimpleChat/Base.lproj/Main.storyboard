@@ -15,13 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-x7-xp1">
-                                <rect key="frame" x="78" y="417" width="258" height="62.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7W-4Q-SGG" userLabel="Log In">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7W-4Q-SGG" userLabel="Log In">
                                 <rect key="frame" x="20" y="782" width="374" height="60"/>
                                 <color key="backgroundColor" red="0.6816025376" green="0.90958708519999998" blue="0.9997245669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -35,7 +29,7 @@
                                     <segue destination="Nax-6a-dXC" kind="show" id="WWT-3K-FYh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7P-vG-SYp" userLabel="Register">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7P-vG-SYp" userLabel="Register">
                                 <rect key="frame" x="20" y="712" width="374" height="60"/>
                                 <color key="backgroundColor" red="0.6816025376" green="0.90958708519999998" blue="0.9997245669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -49,15 +43,26 @@
                                     <segue destination="ZO1-tx-lLA" kind="show" id="vii-Mk-e3s"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="0fy-zL-eJ4">
+                                <rect key="frame" x="107" y="315" width="200" height="266.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-x7-xp1" customClass="CLTypingLabel" customModule="CLTypingLabel">
+                                <rect key="frame" x="207" y="541.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="52"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="iv6-x7-xp1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2gu-Cw-JGA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C7P-vG-SYp" secondAttribute="trailing" constant="20" id="4nk-E3-ecx"/>
                             <constraint firstItem="C7P-vG-SYp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9ll-gk-J6c"/>
                             <constraint firstItem="j7W-4Q-SGG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="EYq-8C-YN0"/>
+                            <constraint firstItem="0fy-zL-eJ4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IEI-Xe-7rC"/>
                             <constraint firstItem="j7W-4Q-SGG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-20" id="NHi-wz-5Ge"/>
+                            <constraint firstItem="0fy-zL-eJ4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Q8m-Yq-wB1"/>
                             <constraint firstItem="j7W-4Q-SGG" firstAttribute="top" secondItem="C7P-vG-SYp" secondAttribute="bottom" constant="10" id="knw-sD-CLv"/>
+                            <constraint firstItem="iv6-x7-xp1" firstAttribute="top" secondItem="0fy-zL-eJ4" secondAttribute="bottom" constant="-40" id="sIc-Gm-Sx3"/>
                             <constraint firstItem="iv6-x7-xp1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t6b-Pu-K3B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j7W-4Q-SGG" secondAttribute="trailing" constant="20" id="v48-KV-ZKp"/>
                         </constraints>
@@ -66,6 +71,7 @@
                     <navigationItem key="navigationItem" id="zAU-3G-6Hi"/>
                     <connections>
                         <outlet property="logInButton" destination="j7W-4Q-SGG" id="Sek-6e-7pR"/>
+                        <outlet property="logoLabel" destination="iv6-x7-xp1" id="0zR-iy-Qcm"/>
                         <outlet property="registerButton" destination="C7P-vG-SYp" id="QYs-fu-h9r"/>
                     </connections>
                 </viewController>
@@ -292,6 +298,7 @@
         <segue reference="hBo-cE-gMY"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Image" width="200" height="266.5"/>
         <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
