@@ -17,6 +17,7 @@
 		D3E75E4F24727DF00027F954 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E4E24727DF00027F954 /* LogInVC.swift */; };
 		D3E75E5124727F430027F954 /* ChatGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E5024727F430027F954 /* ChatGroupsVC.swift */; };
 		D3E75E53247281CC0027F954 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E52247281CC0027F954 /* K.swift */; };
+		D3E75E582472B8F80027F954 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E572472B8F80027F954 /* Category.swift */; };
 		F2335430FADD643A149DF805 /* Pods_SimpleChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1584F08D6C35673AC1CCD04A /* Pods_SimpleChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		D3E75E4E24727DF00027F954 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		D3E75E5024727F430027F954 /* ChatGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupsVC.swift; sourceTree = "<group>"; };
 		D3E75E52247281CC0027F954 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		D3E75E572472B8F80027F954 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E7911E10C346F378AF8D92CF /* Pods-SimpleChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleChat.release.xcconfig"; path = "Target Support Files/Pods-SimpleChat/Pods-SimpleChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 			children = (
 				D380B30F2472694B0004F2C5 /* AppDelegate.swift */,
 				D380B3112472694B0004F2C5 /* SceneDelegate.swift */,
+				D3E75E562472B8DE0027F954 /* Models */,
 				D380B3252472732D0004F2C5 /* Controllers */,
 				D380B3152472694B0004F2C5 /* Main.storyboard */,
 				D380B3182472694C0004F2C5 /* Assets.xcassets */,
@@ -109,6 +112,14 @@
 				D3E75E5024727F430027F954 /* ChatGroupsVC.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D3E75E562472B8DE0027F954 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D3E75E572472B8F80027F954 /* Category.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +244,7 @@
 				D380B3122472694B0004F2C5 /* SceneDelegate.swift in Sources */,
 				D3E75E4F24727DF00027F954 /* LogInVC.swift in Sources */,
 				D380B324247272D20004F2C5 /* RegisterVC.swift in Sources */,
+				D3E75E582472B8F80027F954 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,4 +11,5 @@ import Foundation
 struct K {
     static let registerToChatGroups = "registerToChatGroups"
     static let loginToChatGroups = "loginToChatGroups"
+    static let categoryCellIdentifier = "categoryCell"
 }

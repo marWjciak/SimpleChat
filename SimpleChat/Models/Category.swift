@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+struct Category {
+    let id: String?
+    let name: String
+
+    init(name: String) {
+        id = nil
+        self.name = name
+    }
+}
+
+extension Category: Comparable {
+    static func < (lhs: Category, rhs: Category) -> Bool {
+        return lhs.name < rhs.name
+    }
+
+    static func ==(lhs: Category, rhs: Category) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
