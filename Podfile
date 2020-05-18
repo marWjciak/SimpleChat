@@ -6,5 +6,5 @@ target 'SimpleChat' do
   use_frameworks!
 
   # Pods for SimpleChat
-
+pod 'CLTypingLabel'
 end
