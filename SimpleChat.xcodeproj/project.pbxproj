@@ -18,6 +18,7 @@
 		D3E75E5124727F430027F954 /* ChatGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E5024727F430027F954 /* ChatGroupsVC.swift */; };
 		D3E75E53247281CC0027F954 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E52247281CC0027F954 /* K.swift */; };
 		D3E75E582472B8F80027F954 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E572472B8F80027F954 /* Category.swift */; };
+		D3E75E5A2472D3880027F954 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3E75E592472D3870027F954 /* GoogleService-Info.plist */; };
 		F2335430FADD643A149DF805 /* Pods_SimpleChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1584F08D6C35673AC1CCD04A /* Pods_SimpleChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		D3E75E5024727F430027F954 /* ChatGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupsVC.swift; sourceTree = "<group>"; };
 		D3E75E52247281CC0027F954 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		D3E75E572472B8F80027F954 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D3E75E592472D3870027F954 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7911E10C346F378AF8D92CF /* Pods-SimpleChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleChat.release.xcconfig"; path = "Target Support Files/Pods-SimpleChat/Pods-SimpleChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 				D380B3182472694C0004F2C5 /* Assets.xcassets */,
 				D380B31A2472694C0004F2C5 /* LaunchScreen.storyboard */,
 				D380B31D2472694C0004F2C5 /* Info.plist */,
+				D3E75E592472D3870027F954 /* GoogleService-Info.plist */,
 				D3E75E52247281CC0027F954 /* K.swift */,
 			);
 			path = SimpleChat;
@@ -184,6 +187,7 @@
 			files = (
 				D380B31C2472694C0004F2C5 /* LaunchScreen.storyboard in Resources */,
 				D380B3192472694C0004F2C5 /* Assets.xcassets in Resources */,
+				D3E75E5A2472D3880027F954 /* GoogleService-Info.plist in Resources */,
 				D380B3172472694B0004F2C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

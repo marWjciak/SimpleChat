@@ -7,4 +7,8 @@ target 'SimpleChat' do
 
   # Pods for SimpleChat
 pod 'CLTypingLabel'
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Storage'
+pod 'Firebase/Firestore'
 end
