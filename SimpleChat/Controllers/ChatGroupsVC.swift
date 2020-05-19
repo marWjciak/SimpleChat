@@ -7,9 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatGroupsVC: UITableViewController {
-    var categories = [Category]()
+    private var currentChannelAlertController: UIAlertController?
+
+    private let db = Firestore.firestore()
+    private var categoryReference: CollectionReference {
+        return db.collection("categories")
+    }
+
+    private var categories = [Category]()
+    private var categoryListener: ListenerRegistration?
+
+    var currentUser: User? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +30,18 @@ class ChatGroupsVC: UITableViewController {
         tableView.dataSource = self
 
         navigationItem.hidesBackButton = true
-        navigationItem.title = "Discussion groups"
+        navigationItem.title = currentUser?.email ?? "Categories"
+
+        categoryListener = categoryReference.addSnapshotListener({ (querrySnapshot, error) in
+            guard let snapshot = querrySnapshot else {
+                self.showMessage(for: "Error listening categories update:", with: error?.localizedDescription ?? "no errors")
+                return
+            }
+
+            snapshot.documentChanges.forEach { (change) in
+                self.handleDocumentChange(for: change)
+            }
+        })
     }
 
     @IBAction func logOutClicked(_ sender: Any) {
@@ -27,31 +49,46 @@ class ChatGroupsVC: UITableViewController {
     }
 
     @IBAction func addCategoryClicked(_ sender: Any) {
-        let alertWindow = UIAlertController(title: "Add new category", message: "Type category name", preferredStyle: .alert)
-        var categoryName = UITextField()
-
-        alertWindow.addTextField { (textField) in
+        let alertController = UIAlertController(title: "Add new category", message: "Type category name", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.addTarget(self, action: #selector(self.textFieldDidChanged(_:)), for: .editingChanged)
             textField.placeholder = "Category name..."
-            categoryName = textField
-        }
-
-        let addCategoryAction = UIAlertAction(title: "Add", style: .default) { _ in
-            guard let categoryName = categoryName.text else { return }
-            let category = Category(name: categoryName)
-            self.addCategoryToList(category)
-
-            self.tableView.reloadData()
+            textField.clearButtonMode = .whileEditing
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let addCategoryAction = UIAlertAction(title: "Add", style: .default) { _ in
+            self.addCategory()
+        }
+        addCategoryAction.isEnabled = false
 
-        alertWindow.addAction(cancelAction)
-        alertWindow.addAction(addCategoryAction)
-        alertWindow.preferredAction = addCategoryAction
-        present(alertWindow, animated: true, completion: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(addCategoryAction)
+        alertController.preferredAction = addCategoryAction
+        present(alertController, animated: true, completion: nil)
+
+        self.currentChannelAlertController = alertController
+    }
+
+    @objc private func textFieldDidChanged(_ field: UITextField) {
+        guard let alertController = self.currentChannelAlertController else { return }
+
+        alertController.preferredAction?.isEnabled = field.hasText
     }
 
     //MARK: - Helpers
+    private func addCategory() {
+        guard let alertController = currentChannelAlertController else { return }
+        guard let categoryName = alertController.textFields?.first?.text else { return }
+
+        let category = Category(name: categoryName)
+        categoryReference.addDocument(data: category.representation) { (error) in
+            if let error = error {
+                self.showMessage(for: "Error saving category...", with: error.localizedDescription)
+            }
+        }
+    }
+
     private func addCategoryToList(_ category: Category) {
         guard !categories.contains(category) else {
             return
@@ -59,6 +96,31 @@ class ChatGroupsVC: UITableViewController {
 
         categories.append(category)
         categories.sort()
+
+        guard let index = categories.firstIndex(of: category) else { return }
+        tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+
+    private func showMessage(for title: String, with description: String) {
+        let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+
+        present(alertController, animated: true, completion: nil)
+    }
+
+    private func handleDocumentChange(for change: DocumentChange) {
+        guard let category = Category(document: change.document) else {
+            return
+        }
+
+        switch change.type {
+            case .added:
+                self.addCategoryToList(category)
+            case .modified:
+                print("todo: modification")
+            case .removed:
+                print("todo: remove")
+        }
     }
 }
 

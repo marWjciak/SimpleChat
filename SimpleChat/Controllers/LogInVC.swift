@@ -24,11 +24,17 @@ class LogInVC: UIViewController {
 
         Auth.auth().signIn(withEmail: emailAddress, password: password) { _, error in
             if let error = error {
-                self.showMessage(for: "User registration error...", with: error.localizedDescription)
+                self.showMessage(for: "User login error...", with: error.localizedDescription)
             } else {
                 self.performSegue(withIdentifier: K.loginToChatGroups, sender: self)
             }
         }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? ChatGroupsVC else { return }
+
+        destinationVC.currentUser = Auth.auth().currentUser
     }
 
     private func showMessage(for title: String, with description: String) {

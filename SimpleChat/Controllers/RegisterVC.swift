@@ -31,6 +31,12 @@ class RegisterVC: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? ChatGroupsVC else { return }
+
+        destinationVC.currentUser = Auth.auth().currentUser
+    }
+
     private func showMessage(for title: String, with description: String) {
         let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
