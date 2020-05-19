@@ -15,6 +15,8 @@ class LogInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.hideKeyboardWhenTappedAround()
     }
 
     @IBAction func loginClicked(_ sender: UIButton) {
@@ -29,12 +31,6 @@ class LogInVC: UIViewController {
                 self.performSegue(withIdentifier: K.loginToChatGroups, sender: self)
             }
         }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationVC = segue.destination as? ChatGroupsVC else { return }
-
-        destinationVC.currentUser = Auth.auth().currentUser
     }
 
     private func showMessage(for title: String, with description: String) {

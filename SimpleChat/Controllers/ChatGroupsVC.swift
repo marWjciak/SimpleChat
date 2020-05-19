@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwipeCellKit
 
 class ChatGroupsVC: UITableViewController {
     private var currentChannelAlertController: UIAlertController?
@@ -20,12 +21,12 @@ class ChatGroupsVC: UITableViewController {
     private var categories = [Category]()
     private var categoryListener: ListenerRegistration?
 
-    var currentUser: User? = nil
+    private let currentUser: User? = Auth.auth().currentUser
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.categoryCellIdentifier)
+        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: K.categoryCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -89,6 +90,17 @@ class ChatGroupsVC: UITableViewController {
         }
     }
 
+    private func removeCategory(_ category: Category) {
+        guard let categoryId = category.id else {
+            return
+        }
+        categoryReference.document(categoryId).delete() { (error) in
+            if let error = error {
+                self.showMessage(for: "Category remove failed...", with: error.localizedDescription)
+            }
+        }
+    }
+
     private func addCategoryToList(_ category: Category) {
         guard !categories.contains(category) else {
             return
@@ -99,6 +111,13 @@ class ChatGroupsVC: UITableViewController {
 
         guard let index = categories.firstIndex(of: category) else { return }
         tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+
+    private func removeCategoryFromList(_ category: Category) {
+        guard let index = categories.firstIndex(of: category) else { return }
+
+        categories.remove(at: index)
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 
     private func showMessage(for title: String, with description: String) {
@@ -119,7 +138,7 @@ class ChatGroupsVC: UITableViewController {
             case .modified:
                 print("todo: modification")
             case .removed:
-                print("todo: remove")
+                self.removeCategoryFromList(category)
         }
     }
 }
@@ -128,7 +147,8 @@ class ChatGroupsVC: UITableViewController {
 //MARK: - TableViewDelegate
 extension ChatGroupsVC {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryCellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryCellIdentifier, for: indexPath) as! SwipeTableViewCell
+        cell.delegate = self
 
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = categories[indexPath.row].name
@@ -146,5 +166,27 @@ extension ChatGroupsVC {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
+    }
+}
+
+extension ChatGroupsVC: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .left else { return nil }
+
+        let swipeAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            let category = self.categories[indexPath.row]
+            self.removeCategory(category)
+        }
+
+        swipeAction.image = UIImage(systemName: "trash")
+
+        return [swipeAction]
+    }
+
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var swipeOptions = SwipeOptions()
+        swipeOptions.expansionStyle = .destructive(automaticallyDelete: false)
+
+        return swipeOptions
     }
 }
