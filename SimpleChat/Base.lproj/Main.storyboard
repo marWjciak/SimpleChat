@@ -84,8 +84,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="15W-13-Och" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fBI-RN-VLe">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="fBI-RN-VLe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -114,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhc-sG-LuL" userLabel="Email View">
-                                <rect key="frame" x="0.0" y="168" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="220" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNe-C7-6le">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -132,7 +132,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCb-hv-RT0" userLabel="Password View">
-                                <rect key="frame" x="0.0" y="228" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="280" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bte-Wp-JUe">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -150,7 +150,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-W5-C4k">
-                                <rect key="frame" x="157" y="298" width="100" height="46"/>
+                                <rect key="frame" x="157" y="350" width="100" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -199,11 +199,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Ycq-hY-oT1">
                         <barButtonItem key="leftBarButtonItem" image="plus" catalog="system" id="3T2-OD-DQe">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addCategoryClicked:" destination="yLO-3h-K61" id="Wxq-aq-A25"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="9HL-LK-qb5">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logOutClicked:" destination="yLO-3h-K61" id="24x-KI-vHd"/>
                             </connections>
@@ -223,7 +225,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9SR-Xy-eoh" userLabel="Email View">
-                                <rect key="frame" x="0.0" y="168" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="220" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bco-To-1dK">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -241,7 +243,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11m-bo-Kcd" userLabel="Password View">
-                                <rect key="frame" x="0.0" y="228" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="280" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1Z-rA-U2I">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -259,7 +261,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9i-VL-pgp">
-                                <rect key="frame" x="170" y="298" width="74" height="46"/>
+                                <rect key="frame" x="170" y="350" width="74" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -32,6 +32,7 @@ class ChatGroupsVC: UITableViewController {
 
         navigationItem.hidesBackButton = true
         navigationItem.title = currentUser?.email ?? "Categories"
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemBlue]
 
         categoryListener = categoryReference.addSnapshotListener({ (querrySnapshot, error) in
             guard let snapshot = querrySnapshot else {
