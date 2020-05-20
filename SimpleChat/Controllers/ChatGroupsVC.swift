@@ -46,6 +46,11 @@ class ChatGroupsVC: UITableViewController {
     }
 
     @IBAction func logOutClicked(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+        } catch (let error) {
+            showMessage(for: "Sign Out error...", with: error.localizedDescription)
+        }
         navigationController?.popToRootViewController(animated: true)
     }
 
@@ -173,14 +178,14 @@ extension ChatGroupsVC: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .left else { return nil }
 
-        let swipeAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
             let category = self.categories[indexPath.row]
             self.removeCategory(category)
         }
 
-        swipeAction.image = UIImage(systemName: "trash")
+        deleteAction.image = UIImage(systemName: "trash")
 
-        return [swipeAction]
+        return [deleteAction]
     }
 
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {

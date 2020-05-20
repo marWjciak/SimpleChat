@@ -17,6 +17,10 @@ class LogInVC: UIViewController {
         super.viewDidLoad()
 
         self.hideKeyboardWhenTappedAround()
+        Auth.auth().addStateDidChangeListener { (_, user) in
+            guard user != nil else { return }
+            self.performSegue(withIdentifier: K.loginToChatGroups, sender: self)
+        }
     }
 
     @IBAction func loginClicked(_ sender: UIButton) {
@@ -27,8 +31,6 @@ class LogInVC: UIViewController {
         Auth.auth().signIn(withEmail: emailAddress, password: password) { _, error in
             if let error = error {
                 self.showMessage(for: "User login error...", with: error.localizedDescription)
-            } else {
-                self.performSegue(withIdentifier: K.loginToChatGroups, sender: self)
             }
         }
     }
