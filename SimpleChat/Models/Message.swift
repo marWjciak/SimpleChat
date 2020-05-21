@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import FirebaseFirestore
 import MessageKit
 
 class Message: MessageType {
@@ -31,7 +32,7 @@ class Message: MessageType {
     var downloadURL: URL?
 
     init(user: User, content: String) {
-        sender = Sender(senderId: user.uid, displayName: user.displayName!)
+        sender = Sender(senderId: user.uid, displayName: user.email!)
         self.content = content
         self.image = nil
         sentDate = Date()
@@ -39,7 +40,7 @@ class Message: MessageType {
     }
 
     init(user: User, image: UIImage) {
-        sender = Sender(senderId: user.uid, displayName: user.displayName!)
+        sender = Sender(senderId: user.uid, displayName: user.email!)
         self.image = image
         content = ""
         sentDate = Date()
@@ -49,12 +50,12 @@ class Message: MessageType {
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
 
-        guard let sentDate = data["created"] as? Date else { return nil }
+        guard let sentDate = data["created"] as? Timestamp else { return nil }
         guard let senderID = data["senderID"] as? String else { return nil }
         guard let senderName = data["senderName"] as? String else { return nil }
 
         id = document.documentID
-        self.sentDate = sentDate
+        self.sentDate = sentDate.dateValue()
         sender = Sender(senderId: senderID, displayName: senderName)
 
         if let content = data["content"] as? String {
