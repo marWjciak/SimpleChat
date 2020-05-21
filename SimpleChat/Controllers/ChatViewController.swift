@@ -42,16 +42,16 @@ final class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
 
-        messageListener = reference?.addSnapshotListener({ (querrySnapshot, error) in
+        messageListener = reference?.addSnapshotListener { querrySnapshot, error in
             guard let snapshot = querrySnapshot else {
                 self.showMessage(for: "Error listening messages update:", with: error?.localizedDescription ?? "")
                 return
             }
 
-            snapshot.documentChanges.forEach { (change) in
+            snapshot.documentChanges.forEach { change in
                 self.handleDocumentChange(for: change)
             }
-        })
+        }
     }
 
     // MARK: - Helpers
@@ -122,12 +122,18 @@ extension ChatViewController: MessagesDataSource {
 
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         let name = message.sender.displayName
+        let paragraph = NSMutableParagraphStyle()
 
-        return NSAttributedString(string: name,
-                                  attributes: [
-                                      .font: UIFont.preferredFont(forTextStyle: .caption1),
-                                      .foregroundColor: UIColor(white: 0.3, alpha: 1)
-                                  ])
+        paragraph.alignment = isFromCurrentSender(message: message) ? NSTextAlignment(.right) : NSTextAlignment(.left)
+
+        return NSAttributedString(
+            string: name,
+            attributes: [
+                .font: UIFont.preferredFont(forTextStyle: .caption2),
+                .foregroundColor: UIColor(white: 0.3, alpha: 1),
+                .paragraphStyle: paragraph
+            ]
+        )
     }
 }
 
@@ -138,6 +144,14 @@ extension ChatViewController: MessagesLayoutDelegate {
 
     func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
         return CGSize(width: 0, height: 8)
+    }
+
+    func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 0
+    }
+
+    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 20
     }
 }
 
