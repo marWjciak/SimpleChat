@@ -9,7 +9,7 @@
 import FirebaseAuth
 import UIKit
 
-class RegisterVC: UIViewController {
+class RegisterViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
 
