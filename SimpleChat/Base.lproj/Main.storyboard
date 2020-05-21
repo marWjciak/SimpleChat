@@ -47,7 +47,7 @@
                                 <rect key="frame" x="107" y="315" width="200" height="266.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-x7-xp1" customClass="CLTypingLabel" customModule="CLTypingLabel">
-                                <rect key="frame" x="207" y="541.5" width="0.0" height="0.0"/>
+                                <rect key="frame" x="73.5" y="541.5" width="267.5" height="80.5"/>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="52"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -211,10 +211,29 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="STf-Od-2pF" kind="show" identifier="categoriesToChatWindow" id="ded-n1-gUn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MrA-AP-p2O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3041" y="208"/>
+        </scene>
+        <!--ChatVC-->
+        <scene sceneID="Twi-Ln-XK2">
+            <objects>
+                <viewController id="STf-Od-2pF" customClass="ChatVC" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VWz-x4-eo7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="iHD-fa-iVr"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EdL-UL-KAJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12g-ma-VyF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3977" y="208"/>
         </scene>
         <!--LogIn-->
         <scene sceneID="Ms5-is-idz">

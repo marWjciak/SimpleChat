@@ -173,6 +173,24 @@ extension ChatGroupsVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.categoriesToChatWindow, sender: self)
+    }
+
+    //MARK: - Prepare Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+            case K.categoriesToChatWindow:
+                let destinationVC = segue.destination as! ChatVC
+
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    destinationVC.category = categories[indexPath.row]
+            }
+            default:
+                return
+        }
+    }
 }
 
 extension ChatGroupsVC: SwipeTableViewCellDelegate {
