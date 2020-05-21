@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import SwipeCellKit
 
-class ChatGroupsVC: UITableViewController {
+class ChatGroupsViewController: UITableViewController {
     private var currentChannelAlertController: UIAlertController?
 
     private let db = Firestore.firestore()
@@ -32,6 +32,7 @@ class ChatGroupsVC: UITableViewController {
 
         navigationItem.hidesBackButton = true
         navigationItem.title = currentUser?.email ?? "Categories"
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemBlue]
 
         categoryListener = categoryReference.addSnapshotListener({ (querrySnapshot, error) in
             guard let snapshot = querrySnapshot else {
@@ -150,7 +151,7 @@ class ChatGroupsVC: UITableViewController {
 
 
 //MARK: - TableViewDelegate
-extension ChatGroupsVC {
+extension ChatGroupsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryCellIdentifier, for: indexPath) as! SwipeTableViewCell
         cell.delegate = self
@@ -172,9 +173,27 @@ extension ChatGroupsVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.categoriesToChatWindow, sender: self)
+    }
+
+    //MARK: - Prepare Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+            case K.categoriesToChatWindow:
+                let destinationVC = segue.destination as! ChatViewController
+
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    destinationVC.category = categories[indexPath.row]
+            }
+            default:
+                return
+        }
+    }
 }
 
-extension ChatGroupsVC: SwipeTableViewCellDelegate {
+extension ChatGroupsViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .left else { return nil }
 

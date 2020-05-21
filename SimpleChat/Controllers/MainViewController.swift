@@ -9,7 +9,7 @@
 import UIKit
 import CLTypingLabel
 
-class MainVC: UIViewController {
+class MainViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var logoLabel: CLTypingLabel!

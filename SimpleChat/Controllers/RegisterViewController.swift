@@ -9,7 +9,7 @@
 import FirebaseAuth
 import UIKit
 
-class RegisterVC: UIViewController {
+class RegisterViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
 
@@ -18,10 +18,6 @@ class RegisterVC: UIViewController {
 
         self.hideKeyboardWhenTappedAround()
         self.hideKeyboardWhenTappedAround()
-        Auth.auth().addStateDidChangeListener { (_, user) in
-            guard user != nil else { return }
-            self.performSegue(withIdentifier: K.registerToChatGroups, sender: self)
-        }
     }
 
     @IBAction func registerClicked(_ sender: UIButton) {
@@ -32,6 +28,8 @@ class RegisterVC: UIViewController {
         Auth.auth().createUser(withEmail: emailAddress, password: password) { _, error in
             if let error = error {
                 self.showMessage(for: "User registration error...", with: error.localizedDescription)
+            } else {
+                self.performSegue(withIdentifier: K.registerToChatGroups, sender: self)
             }
         }
     }

@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MainVC-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainVC" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
                                 <rect key="frame" x="107" y="315" width="200" height="266.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-x7-xp1" customClass="CLTypingLabel" customModule="CLTypingLabel">
-                                <rect key="frame" x="207" y="541.5" width="0.0" height="0.0"/>
+                                <rect key="frame" x="73.5" y="541.5" width="267.5" height="80.5"/>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="52"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -84,8 +84,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="15W-13-Och" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fBI-RN-VLe">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="fBI-RN-VLe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -108,13 +108,13 @@
         <!--Register-->
         <scene sceneID="i3n-cU-0eo">
             <objects>
-                <viewController id="ZO1-tx-lLA" customClass="RegisterVC" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZO1-tx-lLA" customClass="RegisterViewController" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tks-in-ONd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhc-sG-LuL" userLabel="Email View">
-                                <rect key="frame" x="0.0" y="168" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="220" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNe-C7-6le">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -132,7 +132,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCb-hv-RT0" userLabel="Password View">
-                                <rect key="frame" x="0.0" y="228" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="280" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bte-Wp-JUe">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -150,7 +150,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-W5-C4k">
-                                <rect key="frame" x="157" y="298" width="100" height="46"/>
+                                <rect key="frame" x="157" y="350" width="100" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -187,7 +187,7 @@
         <!--ChatGroup-->
         <scene sceneID="By1-Qi-6UX">
             <objects>
-                <tableViewController id="yLO-3h-K61" userLabel="ChatGroup" customClass="ChatGroupsVC" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yLO-3h-K61" userLabel="ChatGroup" customClass="ChatGroupsViewController" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Eg7-Hs-xgY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,16 +199,21 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Ycq-hY-oT1">
                         <barButtonItem key="leftBarButtonItem" image="plus" catalog="system" id="3T2-OD-DQe">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addCategoryClicked:" destination="yLO-3h-K61" id="Wxq-aq-A25"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="9HL-LK-qb5">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logOutClicked:" destination="yLO-3h-K61" id="24x-KI-vHd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="j5e-Sb-DoK" kind="show" identifier="categoriesToChatWindow" id="Gp9-yV-5ZV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MrA-AP-p2O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -217,13 +222,13 @@
         <!--LogIn-->
         <scene sceneID="Ms5-is-idz">
             <objects>
-                <viewController id="Nax-6a-dXC" userLabel="LogIn" customClass="LogInVC" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nax-6a-dXC" userLabel="LogIn" customClass="LogInViewController" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vIH-3J-n07">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9SR-Xy-eoh" userLabel="Email View">
-                                <rect key="frame" x="0.0" y="168" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="220" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bco-To-1dK">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -241,7 +246,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11m-bo-Kcd" userLabel="Password View">
-                                <rect key="frame" x="0.0" y="228" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="280" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1Z-rA-U2I">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -259,7 +264,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9i-VL-pgp">
-                                <rect key="frame" x="170" y="298" width="74" height="46"/>
+                                <rect key="frame" x="170" y="350" width="74" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -292,6 +297,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRK-5V-Gv3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1999" y="635"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="dW3-D2-nCz">
+            <objects>
+                <viewController id="j5e-Sb-DoK" customClass="ChatViewController" customModule="SimpleChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UU8-5W-2yY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="smx-ME-7rV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4099" y="208"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
