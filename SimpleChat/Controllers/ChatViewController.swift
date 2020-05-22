@@ -54,6 +54,12 @@ final class ChatViewController: MessagesViewController {
         }
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        messageListener?.remove()
+
+        super.viewDidDisappear(true)
+    }
+
     // MARK: - Helpers
 
     private func save(_ message: Message) {
