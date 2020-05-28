@@ -86,13 +86,25 @@ final class ChatViewController: MessagesViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
 
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
-        } else {
-            imagePicker.sourceType = .photoLibrary
-        }
+        let imagePickerAlertController = UIAlertController(title: "Image source...", message: "Please choose image source", preferredStyle: .alert)
 
-        present(imagePicker, animated: true, completion: nil)
+        let cameraSource = UIAlertAction(title: "Camera", style: .default, handler: { (_) in
+            imagePicker.sourceType = .camera
+            self.present(imagePicker, animated: true, completion: nil)
+        })
+        cameraSource.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+
+        let librarySource = UIAlertAction(title: "Library", style: .default, handler: { (_) in
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        })
+        librarySource.isEnabled = UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
+
+        imagePickerAlertController.addAction(cameraSource)
+        imagePickerAlertController.addAction(librarySource)
+
+        present(imagePickerAlertController, animated: true, completion: nil)
+
     }
 
     // MARK: - Helpers
