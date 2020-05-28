@@ -17,32 +17,28 @@ class Message: MessageType {
     var sender: SenderType
 
     var kind: MessageKind {
-        if let image = image {
-            return .photo(image as! MediaItem)
-        } else {
-            return .text(content)
-        }
+        guard let mediaItem = media else { return .text(content) }
+            return .photo(mediaItem)
     }
 
     var messageId: String {
         return id ?? UUID().uuidString
     }
 
-    var image: UIImage?
-    var downloadURL: URL?
+    var media: Image?
 
     init(user: User, content: String) {
         sender = Sender(senderId: user.uid, displayName: user.email!)
         self.content = content
-        self.image = nil
+        media = nil
         sentDate = Date()
         id = nil
     }
 
     init(user: User, image: UIImage) {
         sender = Sender(senderId: user.uid, displayName: user.email!)
-        self.image = image
         content = ""
+        media = Image(url: nil, image: image, placeholderImage: image, size: image.size)
         sentDate = Date()
         id = nil
     }
@@ -59,14 +55,18 @@ class Message: MessageType {
         sender = Sender(senderId: senderID, displayName: senderName)
 
         if let content = data["content"] as? String {
+            media = nil
             self.content = content
-            downloadURL = nil
         } else if let urlString = data["url"] as? String, let url = URL(string: urlString) {
+            media = Image(url: url, image: nil, placeholderImage: UIImage(), size: CGSize())
             content = ""
-            downloadURL = url
         } else {
             return nil
         }
+    }
+
+    func setImageItem(with url: URL, and image: UIImage) {
+        self.media = Image(url: url, image: image, placeholderImage: image, size: image.size)
     }
 }
 
@@ -78,7 +78,7 @@ extension Message: DatabaseRepresentation {
             "senderName": sender.displayName
         ]
 
-        if let url = downloadURL {
+        if let url = media?.url {
             rep["url"] = url.absoluteString
         } else {
             rep["content"] = content

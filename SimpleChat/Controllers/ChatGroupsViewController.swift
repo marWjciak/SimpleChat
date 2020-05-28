@@ -46,12 +46,6 @@ class ChatGroupsViewController: UITableViewController {
         })
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        categoryListener?.remove()
-
-        super.viewDidDisappear(true)
-    }
-
     @IBAction func logOutClicked(_ sender: Any) {
         do {
             try Auth.auth().signOut()

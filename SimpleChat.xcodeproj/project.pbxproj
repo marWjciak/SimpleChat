@@ -14,6 +14,8 @@
 		D380B3192472694C0004F2C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D380B3182472694C0004F2C5 /* Assets.xcassets */; };
 		D380B31C2472694C0004F2C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D380B31A2472694C0004F2C5 /* LaunchScreen.storyboard */; };
 		D380B324247272D20004F2C5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380B323247272D20004F2C5 /* RegisterViewController.swift */; };
+		D38B4B52247BE5680017FDFD /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B4B51247BE5680017FDFD /* UIImage+Additions.swift */; };
+		D3E082C92479604C008ABFED /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E082C82479604C008ABFED /* Image.swift */; };
 		D3E75E4F24727DF00027F954 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E4E24727DF00027F954 /* LogInViewController.swift */; };
 		D3E75E5124727F430027F954 /* ChatGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E5024727F430027F954 /* ChatGroupsViewController.swift */; };
 		D3E75E53247281CC0027F954 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E75E52247281CC0027F954 /* K.swift */; };
@@ -41,6 +43,8 @@
 		D380B31B2472694C0004F2C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D380B31D2472694C0004F2C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D380B323247272D20004F2C5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D38B4B51247BE5680017FDFD /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		D3E082C82479604C008ABFED /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		D3E75E4E24727DF00027F954 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D3E75E5024727F430027F954 /* ChatGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGroupsViewController.swift; sourceTree = "<group>"; };
 		D3E75E52247281CC0027F954 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				D3E75E5B2473B89A0027F954 /* DatabaseRepresentation.swift */,
 				D3E75E6A247571FE0027F954 /* Message.swift */,
 				D3E75E6C24765CD80027F954 /* Sender.swift */,
+				D3E082C82479604C008ABFED /* Image.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			children = (
 				D3E75E602474056A0027F954 /* UIViewController+Additions.swift */,
 				D3E75E6E247663A20027F954 /* UIColor+Additions.swift */,
+				D38B4B51247BE5680017FDFD /* UIImage+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,8 +283,10 @@
 				D3E75E612474056A0027F954 /* UIViewController+Additions.swift in Sources */,
 				D3E75E5124727F430027F954 /* ChatGroupsViewController.swift in Sources */,
 				D380B3122472694B0004F2C5 /* SceneDelegate.swift in Sources */,
+				D38B4B52247BE5680017FDFD /* UIImage+Additions.swift in Sources */,
 				D3E75E4F24727DF00027F954 /* LogInViewController.swift in Sources */,
 				D3E75E6D24765CD80027F954 /* Sender.swift in Sources */,
+				D3E082C92479604C008ABFED /* Image.swift in Sources */,
 				D3E75E5C2473B89A0027F954 /* DatabaseRepresentation.swift in Sources */,
 				D3E75E6B247571FE0027F954 /* Message.swift in Sources */,
 				D3E75E6F247663A20027F954 /* UIColor+Additions.swift in Sources */,
@@ -432,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MK6VA8XF3X;
 				INFOPLIST_FILE = SimpleChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MK6VA8XF3X;
 				INFOPLIST_FILE = SimpleChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
