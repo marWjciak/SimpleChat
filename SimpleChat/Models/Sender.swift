@@ -11,6 +11,19 @@ import MessageKit
 struct Sender: SenderType {
     var senderId: String
     var displayName: String
+    var initials: String {
+        var initials = ""
+        let tab = displayName.split(separator: " ")
+
+        if tab.count > 1 {
+            initials.append(tab[0].first?.uppercased() ?? "")
+            initials.append(tab[1].first?.uppercased() ?? "")
+        } else {
+            initials.append(tab[0].first?.uppercased() ?? "")
+        }
+        
+        return initials
+    }
 
     init(senderId: String, displayName: String) {
         self.senderId = senderId

@@ -10,13 +10,13 @@ import FirebaseAuth
 import UIKit
 
 class RegisterViewController: UIViewController {
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet weak var displayNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.hideKeyboardWhenTappedAround()
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -29,10 +29,28 @@ class RegisterViewController: UIViewController {
             if let error = error {
                 self.showMessage(for: "User registration error...", with: error.localizedDescription)
             } else {
+                self.upadateDisplayName(for: Auth.auth().currentUser)
                 self.performSegue(withIdentifier: K.registerToChatGroups, sender: self)
             }
         }
     }
+
+    private func upadateDisplayName(for user: User?) {
+        guard let user = user else { return }
+
+        let changeRequest = user.createProfileChangeRequest()
+        guard let displayName = displayNameTextField.text else { return }
+        changeRequest.displayName = displayName
+
+        changeRequest.commitChanges { (error) in
+            if let error = error {
+                self.showMessage(for: "Setting display name...", with: error.localizedDescription)
+            }
+        }
+    }
+
+
+    //MARK: - Helpers
 
     private func showMessage(for title: String, with description: String) {
         let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)

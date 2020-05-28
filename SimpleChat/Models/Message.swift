@@ -28,7 +28,8 @@ class Message: MessageType {
     var media: Image?
 
     init(user: User, content: String) {
-        sender = Sender(senderId: user.uid, displayName: user.email!)
+        let displayName = user.displayName ?? user.email
+        sender = Sender(senderId: user.uid, displayName: displayName!)
         self.content = content
         media = nil
         sentDate = Date()
@@ -36,7 +37,8 @@ class Message: MessageType {
     }
 
     init(user: User, image: UIImage) {
-        sender = Sender(senderId: user.uid, displayName: user.email!)
+        let displayName = user.displayName ?? user.email
+        sender = Sender(senderId: user.uid, displayName: displayName!)
         content = ""
         media = Image(url: nil, image: image, placeholderImage: image, size: image.size)
         sentDate = Date()

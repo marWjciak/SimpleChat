@@ -261,10 +261,6 @@ extension ChatViewController: MessagesDataSource {
 }
 
 extension ChatViewController: MessagesLayoutDelegate {
-    func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return .zero
-    }
-
     func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
         return CGSize(width: 0, height: 8)
     }
@@ -287,6 +283,13 @@ extension ChatViewController: MessagesDisplayDelegate {
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
 
         return .bubbleTail(corner, .curved)
+    }
+
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        let sender = message.sender as? Sender
+        if let sender = sender {
+            avatarView.initials = sender.initials
+        }
     }
 }
 

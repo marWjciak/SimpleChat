@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="15W-13-Och">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="15W-13-Och">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -114,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhc-sG-LuL" userLabel="Email View">
-                                <rect key="frame" x="0.0" y="220" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="280" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNe-C7-6le">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -132,7 +132,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCb-hv-RT0" userLabel="Password View">
-                                <rect key="frame" x="0.0" y="280" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="340" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bte-Wp-JUe">
                                         <rect key="frame" x="10" y="0.0" width="394" height="50"/>
@@ -150,7 +150,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-W5-C4k">
-                                <rect key="frame" x="157" y="350" width="100" height="46"/>
+                                <rect key="frame" x="157" y="410" width="100" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -159,22 +159,45 @@
                                     <action selector="registerClicked:" destination="ZO1-tx-lLA" eventType="touchUpInside" id="XDq-gD-sHf"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDu-LP-bHw" userLabel="Display name View">
+                                <rect key="frame" x="0.0" y="220" width="414" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Display name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dot-ei-fGx" userLabel="Display name TextField">
+                                        <rect key="frame" x="10" y="0.0" width="394" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dot-ei-fGx" firstAttribute="leading" secondItem="bDu-LP-bHw" secondAttribute="leading" constant="10" id="JxK-Gs-XAH"/>
+                                    <constraint firstAttribute="bottom" secondItem="dot-ei-fGx" secondAttribute="bottom" id="O5D-wU-0WG"/>
+                                    <constraint firstAttribute="trailing" secondItem="dot-ei-fGx" secondAttribute="trailing" constant="10" id="Qzo-PT-K9a"/>
+                                    <constraint firstAttribute="height" constant="50" id="WuS-te-aTg"/>
+                                    <constraint firstItem="dot-ei-fGx" firstAttribute="top" secondItem="bDu-LP-bHw" secondAttribute="top" id="emZ-NE-I3L"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.6816025376" green="0.90958708519999998" blue="0.9997245669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bDu-LP-bHw" firstAttribute="top" secondItem="jfN-N8-Kkw" secondAttribute="top" constant="80" id="3DY-hb-eAG"/>
                             <constraint firstAttribute="trailing" secondItem="tCb-hv-RT0" secondAttribute="trailing" id="AmX-wX-cV7"/>
                             <constraint firstAttribute="trailing" secondItem="Uhc-sG-LuL" secondAttribute="trailing" id="FSP-9I-aWM"/>
                             <constraint firstItem="tCb-hv-RT0" firstAttribute="leading" secondItem="Tks-in-ONd" secondAttribute="leading" id="HVs-Fk-tBZ"/>
                             <constraint firstItem="Vde-W5-C4k" firstAttribute="top" secondItem="tCb-hv-RT0" secondAttribute="bottom" constant="20" id="IB9-vy-pqx"/>
+                            <constraint firstItem="bDu-LP-bHw" firstAttribute="centerX" secondItem="Tks-in-ONd" secondAttribute="centerX" id="JTy-ut-FEH"/>
                             <constraint firstItem="Uhc-sG-LuL" firstAttribute="leading" secondItem="Tks-in-ONd" secondAttribute="leading" id="KU1-bB-4C2"/>
+                            <constraint firstItem="jfN-N8-Kkw" firstAttribute="trailing" secondItem="bDu-LP-bHw" secondAttribute="trailing" id="Koa-Dk-2Tv"/>
                             <constraint firstItem="tCb-hv-RT0" firstAttribute="top" secondItem="Uhc-sG-LuL" secondAttribute="bottom" constant="10" id="OPU-5U-oD8"/>
+                            <constraint firstItem="bDu-LP-bHw" firstAttribute="leading" secondItem="jfN-N8-Kkw" secondAttribute="leading" id="cU8-US-fGI"/>
                             <constraint firstItem="Vde-W5-C4k" firstAttribute="centerX" secondItem="Tks-in-ONd" secondAttribute="centerX" id="fmV-1z-Q7p"/>
-                            <constraint firstItem="Uhc-sG-LuL" firstAttribute="top" secondItem="jfN-N8-Kkw" secondAttribute="top" constant="80" id="wdM-Ny-mKP"/>
+                            <constraint firstItem="Uhc-sG-LuL" firstAttribute="top" secondItem="bDu-LP-bHw" secondAttribute="bottom" constant="10" id="wdM-Ny-mKP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jfN-N8-Kkw"/>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="2Ra-1K-Jlu"/>
                     <connections>
+                        <outlet property="displayNameTextField" destination="dot-ei-fGx" id="Ma6-0K-KDb"/>
                         <outlet property="emailTextField" destination="lNe-C7-6le" id="3kh-Tr-B5b"/>
                         <outlet property="passwordTextField" destination="Bte-Wp-JUe" id="dAo-c6-O12"/>
                         <segue destination="yLO-3h-K61" kind="show" identifier="registerToChatGroups" id="gt0-H9-0bW"/>
