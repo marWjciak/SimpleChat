@@ -10,9 +10,9 @@ import FirebaseAuth
 import UIKit
 
 class RegisterViewController: UIViewController {
-    @IBOutlet weak var displayNameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet var displayNameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,15 +42,14 @@ class RegisterViewController: UIViewController {
         guard let displayName = displayNameTextField.text else { return }
         changeRequest.displayName = displayName
 
-        changeRequest.commitChanges { (error) in
+        changeRequest.commitChanges { error in
             if let error = error {
                 self.showMessage(for: "Setting display name...", with: error.localizedDescription)
             }
         }
     }
 
-
-    //MARK: - Helpers
+    // MARK: - Helpers
 
     private func showMessage(for title: String, with description: String) {
         let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)

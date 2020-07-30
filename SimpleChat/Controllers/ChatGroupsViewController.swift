@@ -6,9 +6,9 @@
 //  Copyright © 2020 Marcin Wójciak. All rights reserved.
 //
 
-import UIKit
 import Firebase
 import SwipeCellKit
+import UIKit
 
 class ChatGroupsViewController: UITableViewController {
     private var currentChannelAlertController: UIAlertController?
@@ -31,25 +31,25 @@ class ChatGroupsViewController: UITableViewController {
         tableView.dataSource = self
 
         navigationItem.hidesBackButton = true
-        navigationItem.title = currentUser?.displayName ?? "Categories"
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemBlue]
+        navigationItem.title = "Categories"
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]
 
-        categoryListener = categoryReference.addSnapshotListener({ (querrySnapshot, error) in
+        categoryListener = categoryReference.addSnapshotListener { querrySnapshot, error in
             guard let snapshot = querrySnapshot else {
                 self.showMessage(for: "Error listening categories update:", with: error?.localizedDescription ?? "no errors")
                 return
             }
 
-            snapshot.documentChanges.forEach { (change) in
+            snapshot.documentChanges.forEach { change in
                 self.handleDocumentChange(for: change)
             }
-        })
+        }
     }
 
     @IBAction func logOutClicked(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-        } catch (let error) {
+        } catch {
             showMessage(for: "Sign Out error...", with: error.localizedDescription)
         }
         navigationController?.popToRootViewController(animated: true)
@@ -57,7 +57,7 @@ class ChatGroupsViewController: UITableViewController {
 
     @IBAction func addCategoryClicked(_ sender: Any) {
         let alertController = UIAlertController(title: "Add new category", message: "Type category name", preferredStyle: .alert)
-        alertController.addTextField { (textField) in
+        alertController.addTextField { textField in
             textField.addTarget(self, action: #selector(self.textFieldDidChanged(_:)), for: .editingChanged)
             textField.placeholder = "Category name..."
             textField.clearButtonMode = .whileEditing
@@ -74,22 +74,23 @@ class ChatGroupsViewController: UITableViewController {
         alertController.preferredAction = addCategoryAction
         present(alertController, animated: true, completion: nil)
 
-        self.currentChannelAlertController = alertController
+        currentChannelAlertController = alertController
     }
 
     @objc private func textFieldDidChanged(_ field: UITextField) {
-        guard let alertController = self.currentChannelAlertController else { return }
+        guard let alertController = currentChannelAlertController else { return }
 
         alertController.preferredAction?.isEnabled = field.hasText
     }
 
-    //MARK: - Helpers
+    // MARK: - Helpers
+
     private func addCategory() {
         guard let alertController = currentChannelAlertController else { return }
         guard let categoryName = alertController.textFields?.first?.text else { return }
 
         let category = Category(name: categoryName)
-        categoryReference.addDocument(data: category.representation) { (error) in
+        categoryReference.addDocument(data: category.representation) { error in
             if let error = error {
                 self.showMessage(for: "Error saving category...", with: error.localizedDescription)
             }
@@ -100,7 +101,7 @@ class ChatGroupsViewController: UITableViewController {
         guard let categoryId = category.id else {
             return
         }
-        categoryReference.document(categoryId).delete() { (error) in
+        categoryReference.document(categoryId).delete { error in
             if let error = error {
                 self.showMessage(for: "Category remove failed...", with: error.localizedDescription)
             }
@@ -140,17 +141,17 @@ class ChatGroupsViewController: UITableViewController {
 
         switch change.type {
             case .added:
-                self.addCategoryToList(category)
+                addCategoryToList(category)
             case .modified:
                 print("todo: modification")
             case .removed:
-                self.removeCategoryFromList(category)
+                removeCategoryFromList(category)
         }
     }
 }
 
+// MARK: - TableViewDelegate
 
-//MARK: - TableViewDelegate
 extension ChatGroupsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryCellIdentifier, for: indexPath) as! SwipeTableViewCell
@@ -178,7 +179,8 @@ extension ChatGroupsViewController {
         performSegue(withIdentifier: K.categoriesToChatWindow, sender: self)
     }
 
-    //MARK: - Prepare Segue
+    // MARK: - Prepare Segue
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
             case K.categoriesToChatWindow:
@@ -186,7 +188,7 @@ extension ChatGroupsViewController {
 
                 if let indexPath = tableView.indexPathForSelectedRow {
                     destinationVC.category = categories[indexPath.row]
-            }
+                }
             default:
                 return
         }
@@ -197,7 +199,7 @@ extension ChatGroupsViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .left else { return nil }
 
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { _, indexPath in
             let category = self.categories[indexPath.row]
             self.removeCategory(category)
         }

@@ -18,7 +18,7 @@ class Message: MessageType {
 
     var kind: MessageKind {
         guard let mediaItem = media else { return .text(content) }
-            return .photo(mediaItem)
+        return .photo(mediaItem)
     }
 
     var messageId: String {
@@ -68,7 +68,7 @@ class Message: MessageType {
     }
 
     func setImageItem(with url: URL, and image: UIImage) {
-        self.media = Image(url: url, image: image, placeholderImage: image, size: image.size)
+        media = Image(url: url, image: image, placeholderImage: image, size: image.size)
     }
 }
 

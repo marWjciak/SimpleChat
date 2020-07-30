@@ -21,7 +21,7 @@ struct Sender: SenderType {
         } else {
             initials.append(tab[0].first?.uppercased() ?? "")
         }
-        
+
         return initials
     }
 

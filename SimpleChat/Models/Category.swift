@@ -25,12 +25,11 @@ struct Category {
         id = document.documentID
         self.name = name
     }
-
 }
 
 extension Category: DatabaseRepresentation {
-    var representation: [String : Any] {
-        var rep = ["name" : name]
+    var representation: [String: Any] {
+        var rep = ["name": name]
 
         if let id = id {
             rep["id"] = id
@@ -45,7 +44,7 @@ extension Category: Comparable {
         return lhs.name < rhs.name
     }
 
-    static func ==(lhs: Category, rhs: Category) -> Bool {
+    static func == (lhs: Category, rhs: Category) -> Bool {
         return lhs.id == rhs.id
     }
 }

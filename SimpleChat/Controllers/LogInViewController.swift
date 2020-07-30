@@ -17,7 +17,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
 
         self.hideKeyboardWhenTappedAround()
-        Auth.auth().addStateDidChangeListener { (_, user) in
+        Auth.auth().addStateDidChangeListener { _, user in
             guard user != nil else { return }
             self.performSegue(withIdentifier: K.loginToChatGroups, sender: self)
         }

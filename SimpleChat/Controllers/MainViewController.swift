@@ -6,13 +6,13 @@
 //  Copyright © 2020 Marcin Wójciak. All rights reserved.
 //
 
-import UIKit
 import CLTypingLabel
+import UIKit
 
 class MainViewController: UIViewController {
-    @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var logInButton: UIButton!
-    @IBOutlet weak var logoLabel: CLTypingLabel!
+    @IBOutlet var registerButton: UIButton!
+    @IBOutlet var logInButton: UIButton!
+    @IBOutlet var logoLabel: CLTypingLabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,4 @@ class MainViewController: UIViewController {
             self.logInButton.isHidden = false
         }
     }
-
 }
-
